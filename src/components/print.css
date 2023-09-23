@@ -1,0 +1,12 @@
+/* print.css */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  li {
+    page-break-inside: avoid;
+  }
+  
+  /* Additional print styles as needed */
+  

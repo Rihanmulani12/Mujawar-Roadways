@@ -1,0 +1,292 @@
+/* Reset margin and padding for all elements */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Styles for the invoice form container */
+.invoice-form {
+  max-width: 794px;
+  margin: 0 auto;
+  padding: 5px;
+  border: 1px solid #aaa9a9;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+}
+
+/* Style for form elements */
+form {
+  display: grid;
+  gap: 5px; /* Adjusted gap for better spacing */
+}
+
+/* Style for the invoice form container */
+
+
+/* Style for labels */
+label {
+  margin-inline-start: 3px;
+ 
+  font-weight: inherit;
+  font-size: 10px; /* Adjusted font size for better readability */
+}
+
+/* Style for text input fields */
+input[type="text"] {
+ 
+  
+ 
+  padding: 0px; /* Adjusted padding for better spacing */
+ 
+
+  box-sizing: border-box;
+  font-size: 14px; /* Adjusted font size for better readability */
+  margin-bottom: 0px;
+  margin-top: 0px;
+  margin-left:0px ; /* Added margin to separate input fields */
+}
+
+/* Style for the "Date" input field */
+#Date {
+  text-align: end;
+  justify-content: space-between;
+  display: flex;
+  margin-top: -1px;
+  margin-inline-start: 16px;
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  outline: none;
+}
+
+/* Style for the service table */
+.service-table {
+  width: 96%;
+  border-collapse: collapse;
+  margin-top: 0px;
+  margin-top: -1px;
+  margin-bottom: 10px;
+  margin-left:-1px; /* Adjusted margin for better spacing */
+}
+
+/* Style for table headers and data cells */
+.service-table th,
+.service-table td {
+  border: 1px solid #ddd;
+  padding: 5px; /* Adjusted padding for better spacing */
+  text-align: center;
+  width: 466px;
+  font-size: 9px;
+  
+  
+  
+  font-style: initial;
+ 
+  /* Adjusted font size for better readability */
+}
+
+/* Style for the heading row in the service table */
+.service-table .heading {
+  background-color: #f2f2f2;
+}
+
+/* Style for the "Authorized Signature" container */
+.authorized-signature-container {
+  display: flex;
+  align-items: center;
+  margin-top: 1px; /* Adjusted margin for better spacing */
+  margin-left: 150px;
+}
+
+/* Style for labels inside the "Authorized Signature" container */
+.authorized-signature-container label {
+  margin-right: 20px; /* Adjusted margin for better spacing */
+  font-size: 12px; /* Adjusted font size for better readability */
+  margin-left: 30px;
+}
+
+/* Style for checkboxes inside the "Authorized Signature" container */
+.authorized-signature-container input[type="checkbox"] {
+  margin-right: 1px; /* Adjusted margin for better spacing */
+}
+
+/* Removed the 'info' class as it's not used in the provided JSX */
+
+/* Style for the 'logo-header-container' */
+.logo-header-container {
+     display: flex;
+    align-items: center;
+    margin-bottom: -8px; /* Adjusted margin for better spacing */
+}
+
+/* Style for the logo image */
+.logo-header-container img {
+  height: 30px;
+  width: 30px;
+  margin-right: 5px;
+  margin-top: -21px;
+  margin-bottom: 0px; /* Adjusted margin for better spacing */
+}
+
+/* Style for the 'h3' element inside 'logo-header-container' */
+.logo-header-container h3 {
+  margin-top: -22px;
+  font-size: 18px;
+  margin-bottom: 5px; /* Adjusted font size for better readability */
+}
+
+/* Style for the 'small-label' class */
+.small-label {
+  display: flex;
+  align-items: center;
+  font-size: 14px; /* Adjusted font size for better readability */
+  font-weight: bold;
+}
+
+/* Style for labels inside the 'small-label' class */
+.small-label label {
+  margin-right: 2px; /* Adjusted margin for better spacing */
+}
+
+/* Style for the 'small-input' class */
+.small-input {
+  font-size: 14px; /* Adjusted font size for better readability */
+  border: 1px solid #ccc;
+  padding: 200px; /* Adjusted padding for better spacing */
+  border-radius: 2px;
+  width: 40px;
+}
+
+/* Style for the 'receiver-container' class */
+.receiver-container {
+  margin-top: 10px;
+  /* Adjusted margin for better spacing */
+}
+.address {
+  font-size: 10px; /* Adjust the font size as needed */
+  margin-top: 1px; /* Add margin to separate it from the elements above */
+  line-height: 1.2; /* Adjust line-height for better readability */
+  color: #333; /* Adjust text color if necessary */
+  text-align: left;
+}
+/* Style for mobile numbers */
+h5.mobile {
+  font-size: 12px; /* Adjust the font size as needed */
+  margin-top:1px; /* Add margin to separate them from other elements */
+  color: #333; /* Adjust text color if necessary */
+  text-align: left;
+}
+
+/* Style for daily services */
+h5.services {
+  font-size: 9px;
+  margin-bottom :0px;
+  color: #333;
+  text-align: left;
+  padding: 0px;
+}
+table {
+  margin: 0 auto; 
+  margin-right: 10px;/* Set horizontal margin to auto to center the table */
+}
+td {
+  text-align: center; /* Center-align the content within each table cell */
+}
+
+.consigneeBox #consigneeInput{
+  margin-right: 20px;
+  margin-left: 20px;
+  width: 350px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+.consignorBox #consignorInput{
+  margin-left: auto;
+  width: 350px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+
+.Consignorlable{
+  text-align: start;
+  margin-top: -12px;
+  
+}
+.Consigneelable{
+  text-align: end;
+  margin-right: 30px;
+  margin-top: -12px;
+}
+
+
+.subjectedkop{
+  text-align: end;
+  margin-bottom: 20px;
+ 
+}
+
+.item, #TotalAmount{
+  
+  margin-bottom:50px;
+}
+
+
+.BC{
+  margin-top: 15px;
+  
+  
+}
+.Payment{
+  display: flex;
+  flex-direction: row;
+  margin: 2px;
+  width: auto;
+  
+
+}
+.Terms{
+  text-align: start;
+  display: block;
+  font: 7px smaller;
+  
+  
+}
+.dagdiv{
+  
+  margin-bottom: 50px;
+}
+
+
+
+
+
+
+.Others{
+ 
+  width: 80px;
+}
+
+.center-column , #QTY , #Parts, #Weight , #DecideVal{
+   margin-bottom: 40px;
+   margin-top: auto;
+   
+}
+
+
+
+
+
+
+/*  */
+
+
+
+
+
+
+
+
+
