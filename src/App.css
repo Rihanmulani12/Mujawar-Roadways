@@ -71,11 +71,13 @@ input[type="text"] {
 }
 
 button {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #d5dfdf;
+  color: #151616;
   border: none;
-  padding: 10px 20px;
+  padding: 5px 2px;
   cursor: pointer;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
 }
 
 ul {

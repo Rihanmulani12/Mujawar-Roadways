@@ -18,9 +18,6 @@ const InvoiceBox = () => {
     
   };
   
-  
-
-
   return (
     <div className="invoice-form">
       <table cellPadding="0" cellSpacing="0">
@@ -52,11 +49,13 @@ const InvoiceBox = () => {
               <div className="small-label">
                 <label htmlFor="Date" style={{marginLeft : "15px"}}>Date:</label>
                 <input type="date" id="Date" defaultValue={currentDate} />
+               
               </div>
 
               <div className="small-label">
                 <button onClick={handlePrintInvoice}>Bill no</button>
-                <input style={{ width: "50%" }} type="text" id="repcit" />
+                <input style={{ width: "51%" , marginLeft:"0px"}} type="text" id="repcit" />
+               
               </div>
             </td>
           </tr>
@@ -67,6 +66,7 @@ const InvoiceBox = () => {
             <td colSpan="3">
               <table>
                 <tbody style={{ textAlign: "center" }}>
+                
                   <tr className="info">
                     <td className="info-column" id="coningerid">
                       <div className="Consignorlable">
@@ -117,6 +117,7 @@ const InvoiceBox = () => {
               <table cellSpacing="0" cellPadding="0" className="service-table">
                 <thead>
                   <tr className="heading">
+                 
                     <td className="center-column">QTY</td>
                     <td className="center-column">PARTICULARS (DAG)</td>
                     <td className="center-column">WEIGHT</td>
@@ -130,17 +131,20 @@ const InvoiceBox = () => {
                 <tbody>
                   <tr className="item">
                     <td>
-                      <input type="text" id="QTY" name="QTY" />
+                   
+                      <textarea  type="text" id="QTY" name="QTY" />
+                    
+                    
                     </td>
                     <td>
-                      <input type="text" id="Parts" name="Parts" />
+                      <textarea  type="text" id="Parts" name="Parts" />
                     </td>
                     <td>
-                      <input type="text" id="Weight" name="Weight" />
+                      <textarea  type="text" id="Weight" name="Weight" />
                     </td>
 
                     <td>
-                      <input
+                      <textarea 
                         type="text"
                         id="DecideVal"
                         name="DecideVal"
@@ -150,13 +154,13 @@ const InvoiceBox = () => {
 
                     <td>
                       <label>Crossing</label>
-                      <input type="text" id="crossing" name="crossing" />
+                      <textarea  type="text" id="crossing" name="crossing" />
                       <label>Handling Charges</label>
-                      <input type="text" id="Hamali" name="Hamali" />
+                      <textarea  type="text" id="Hamali" name="Hamali" />
                     </td>
-                    <td>
+                    <td className="Othrestd " id="Othrestd">
                       <label>OTHERS</label>
-                      <input type="text" id="others" name="others" />
+                      <textarea  type="text" id="others" name="others" />
                       <div className="BC">
                         <label>Bill Charges : 5 /- only </label>
                       </div>
@@ -165,15 +169,15 @@ const InvoiceBox = () => {
                     <td>
                       <div className="totaldiv">
                         <div>
-                          <input type="text" id="Total" name="Total" />
+                          <textarea  type="text" id="Total" name="Total" />
                         </div>
                         <div className="Payment">
-                          <div className="Paymentlabel">
+                         
                             <label htmlFor="payment">Payment:</label>
-                          </div>
-                          <label htmlFor="payment">Paid</label>
-                          <input type="checkbox" id="topayInput" name="TOPAY" />
-                          <label htmlFor="payment">To-Pay</label>
+                          
+                          <label htmlFor="payment" style={{marginTop : "5px"}}>Paid</label>
+                          <input type="checkbox" id="paidInput" name="TOPAY" />
+                          <label htmlFor="payment" style={{}}>To-Pay</label>
                           <input type="checkbox" id="topayInput" name="TOPAY" />
                         </div>
                       </div>
