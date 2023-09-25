@@ -1,21 +1,26 @@
 import React, { useState } from "react";
-import "./InvoiceForm.css"; 
-
 import logo from "./img.png";
-import { blue, red } from "@mui/material/colors";
+import "./InvoiceForm.css";
 
 const InvoiceBox = () => {
   const currentDate = new Date().toISOString().split("T")[0];
   const [billNumber, setBillNumber] = useState(1000);
 
   const generateBillNumber = () => {
-    setBillNumber(prevBillNumber => prevBillNumber + 1);
-    document.getElementById("repcit").value = billNumber + 1;
+    const updatedBillNumber = billNumber + 1;
+    setBillNumber(updatedBillNumber);
+    document.getElementById("repcit").value = updatedBillNumber;
   };
 
   const handlePrintInvoice = () => {
     generateBillNumber();
-    
+    // Add your logic for printing the invoice
+  };
+
+  const handleCopyInvoice = () => {
+    const originalInvoice = document.querySelector(".invoice-form");
+    const copyInvoice = originalInvoice.cloneNode(true);
+    document.body.appendChild(copyInvoice);
   };
   
   return (
@@ -218,9 +223,8 @@ const InvoiceBox = () => {
           the goods value above 25000 rupees, otherwise we are not responsible
           for the above value in case of loss
         </p>
-      </div>
+       </div>
     </div>
   );
-};
-
+  };
 export default InvoiceBox;

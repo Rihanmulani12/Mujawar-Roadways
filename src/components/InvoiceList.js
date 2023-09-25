@@ -4,10 +4,17 @@ const InvoiceList = ({ invoices }) => {
   const handlePrint = () => {
     window.print();
   };
+  const handleCopyInvoice = () => {
+    const originalInvoice = document.querySelector(".invoice-form");
+    const copyInvoice = originalInvoice.cloneNode(true);
+    document.body.appendChild(copyInvoice);
+  };
 
   return (
     <div>
       <button onClick={handlePrint}>Print Invoices</button>
+      <button onClick={handleCopyInvoice}>Copy Invoice</button>
+      
       <ul>
         {invoices.map((invoice, index) => (
           <li key={index}>
