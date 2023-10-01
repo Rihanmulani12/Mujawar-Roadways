@@ -12,8 +12,8 @@ const InvoiceList = ({ invoices }) => {
 
   return (
     <div>
-      <button onClick={handlePrint}>Print Invoices</button>
-      <button onClick={handleCopyInvoice}>Copy Invoice</button>
+      <button onClick={handlePrint} style={{marginRight :"2px" , marginTop :"1px" , marginTop:"10px"}}>Print Invoices</button>
+      <button onClick={handleCopyInvoice} style={{marginLeft : "2px"}}>Copy Invoice</button>
       
       <ul>
         {invoices.map((invoice, index) => (

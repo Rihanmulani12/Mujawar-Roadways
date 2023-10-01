@@ -14,17 +14,13 @@ const InvoiceBox = () => {
 
   const handlePrintInvoice = () => {
     generateBillNumber();
-    // Add your logic for printing the invoice
+   
   };
 
-  const handleCopyInvoice = () => {
-    const originalInvoice = document.querySelector(".invoice-form");
-    const copyInvoice = originalInvoice.cloneNode(true);
-    document.body.appendChild(copyInvoice);
-  };
+  
   
   return (
-    <div className="invoice-form">
+    <div className="invoice-form" style={{ marginBottom: "20px" }}>
       <table cellPadding="0" cellSpacing="0">
         <tbody>
           <tr className="top-row">
@@ -41,26 +37,33 @@ const InvoiceBox = () => {
                 Mobile No : 9370135469, 7767882009, 9764484163
               </h5>
               <h5 className="services">
-                Daily Services : Karad, Islampur, Kasegav, Vathar
+                Daily Services : Karad, Islampur, Kasegaon, Vathar
               </h5>
             </td>
             <td className="date-billno-container">
               <div className="subjectedkop">
-                <label htmlFor="Date" style={{ marginRight: "50px" , marginBottom:"10px" }}>
+                <label
+                  htmlFor="Date"
+                  style={{ marginRight: "50px", marginBottom: "10px" }}
+                >
                   <b>Subjected To Kolhapur Jurisdication Only</b>
                 </label>
               </div>
 
               <div className="small-label">
-                <label htmlFor="Date" style={{marginLeft : "15px"}}>Date:</label>
+                <label htmlFor="Date" style={{ marginLeft: "15px" }}>
+                  Date:
+                </label>
                 <input type="date" id="Date" defaultValue={currentDate} />
-               
               </div>
 
               <div className="small-label">
                 <button onClick={handlePrintInvoice}>Bill no</button>
-                <input style={{ width: "51%" , marginLeft:"0px"}} type="text" id="repcit" />
-               
+                <input
+                  style={{ width: "51%", marginLeft: "0px" }}
+                  type="text"
+                  id="repcit"
+                />
               </div>
             </td>
           </tr>
@@ -71,8 +74,8 @@ const InvoiceBox = () => {
             <td colSpan="3">
               <table>
                 <tbody style={{ textAlign: "center" }}>
-                
                   <tr className="info">
+                  
                     <td className="info-column" id="coningerid">
                       <div className="Consignorlable">
                         <label
@@ -122,7 +125,6 @@ const InvoiceBox = () => {
               <table cellSpacing="0" cellPadding="0" className="service-table">
                 <thead>
                   <tr className="heading">
-                 
                     <td className="center-column">QTY</td>
                     <td className="center-column">PARTICULARS (DAG)</td>
                     <td className="center-column">WEIGHT</td>
@@ -136,20 +138,17 @@ const InvoiceBox = () => {
                 <tbody>
                   <tr className="item">
                     <td>
-                   
-                      <textarea  type="text" id="QTY" name="QTY" />
-                    
-                    
+                      <textarea type="text" id="QTY" name="QTY" />
                     </td>
                     <td>
-                      <textarea  type="text" id="Parts" name="Parts" />
+                      <textarea type="text" id="Parts" name="Parts" />
                     </td>
                     <td>
-                      <textarea  type="text" id="Weight" name="Weight" />
+                      <textarea type="text" id="Weight" name="Weight" />
                     </td>
 
                     <td>
-                      <textarea 
+                      <textarea
                         type="text"
                         id="DecideVal"
                         name="DecideVal"
@@ -159,13 +158,13 @@ const InvoiceBox = () => {
 
                     <td>
                       <label>Crossing</label>
-                      <textarea  type="text" id="crossing" name="crossing" />
+                      <textarea type="text" id="crossing" name="crossing" />
                       <label>Handling Charges</label>
-                      <textarea  type="text" id="Hamali" name="Hamali" />
+                      <textarea type="text" id="Hamali" name="Hamali" />
                     </td>
                     <td className="Othrestd " id="Othrestd">
                       <label>OTHERS</label>
-                      <textarea  type="text" id="others" name="others" />
+                      <textarea type="text" id="others" name="others" />
                       <div className="BC">
                         <label>Bill Charges : 5 /- only </label>
                       </div>
@@ -174,16 +173,47 @@ const InvoiceBox = () => {
                     <td>
                       <div className="totaldiv">
                         <div>
-                          <textarea  type="text" id="Total" name="Total" />
+                          <textarea type="text" id="Total" name="Total" />
                         </div>
                         <div className="Payment">
-                         
-                            <label htmlFor="payment">Payment:</label>
-                          
-                          <label htmlFor="payment" style={{marginTop : "5px"}}>Paid</label>
-                          <input type="checkbox" id="paidInput" name="TOPAY" />
-                          <label htmlFor="payment" style={{}}>To-Pay</label>
-                          <input type="checkbox" id="topayInput" name="TOPAY" />
+                          <label htmlFor="payment" style={{marginBottom :"10px" , fontWeight :"bold"}}>Payment:</label>
+
+                          <div
+                            style={{ display: "inline-flex", alignItems: "center" }}
+                          >
+                            <label
+                              htmlFor="paidInput"
+                              style={{ marginLeft: "1px" , marginRight:"1px" }}
+                            >
+                              PAID:
+                            </label>
+                            <input
+                              type="checkbox"
+                              id="paidInput"
+                              name="TOPAY"
+                              style={{marginRight : "5px" }}
+                            />
+                          </div>
+
+                          <div
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              marginTop: "5px",
+                            }}
+                          >
+                            <label
+                              htmlFor="topayInput"
+                              style={{ marginRight: "1px" , marginLeft:"1px" }}
+                            >
+                              TOPAY:
+                            </label>
+                            <input
+                              type="checkbox"
+                              id="topayInput"
+                              name="TOPAY"
+                             style={{marginleft :"1px"}}/>
+                          </div>
                         </div>
                       </div>
                     </td>
@@ -223,8 +253,9 @@ const InvoiceBox = () => {
           the goods value above 25000 rupees, otherwise we are not responsible
           for the above value in case of loss
         </p>
-       </div>
+      </div>
     </div>
   );
   };
 export default InvoiceBox;
+ 
