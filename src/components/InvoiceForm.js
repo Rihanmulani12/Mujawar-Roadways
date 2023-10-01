@@ -1,20 +1,65 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import logo from "./img.png";
 import "./InvoiceForm.css";
 
+const consignorSuggestionsArray = ['SDM', 'Sapuu', 'Shaha']; // Predefined consignor suggestions
+const consigneeSuggestionsArray = ['arbaz', 'summya', 'sahil']; // Predefined consignee suggestions
+
 const InvoiceBox = () => {
   const currentDate = new Date().toISOString().split("T")[0];
-  const [billNumber, setBillNumber] = useState(1000);
+  const [billNumber, setBillNumber] = useState(0);
+  const [consignor, setConsignor] = useState('');
+  const [consignee, setConsignee] = useState('');
+  const [consignorSuggestions, setConsignorSuggestions] = useState([]);
+  const [consigneeSuggestions, setConsigneeSuggestions] = useState([]);
 
   const generateBillNumber = () => {
-    const updatedBillNumber = billNumber + 1;
+    let updatedBillNumber = billNumber + 1;
+    if (updatedBillNumber === 10) {
+      updatedBillNumber = 0;
+    }
     setBillNumber(updatedBillNumber);
     document.getElementById("repcit").value = updatedBillNumber;
   };
 
   const handlePrintInvoice = () => {
     generateBillNumber();
-   
+  };
+
+  const suggestConsignorNames = (input) => {
+    return consignorSuggestionsArray.filter(name =>
+      name.toLowerCase().includes(input.toLowerCase())
+    );
+  };
+
+  const suggestConsigneeNames = (input) => {
+    return consigneeSuggestionsArray.filter(name =>
+      name.toLowerCase().includes(input.toLowerCase())
+    );
+  };
+
+  const handleConsignorChange = (event) => {
+    const newValue = event.target.value;
+    setConsignor(newValue);
+    setConsignorSuggestions(suggestConsignorNames(newValue));
+    localStorage.setItem('consignor', newValue);
+  };
+
+  const handleConsigneeChange = (event) => {
+    const newValue = event.target.value;
+    setConsignee(newValue);
+    setConsigneeSuggestions(suggestConsigneeNames(newValue));
+    localStorage.setItem('consignee', newValue);
+  };
+
+  const handleConsignorSuggestionClick = (suggestion) => {
+    setConsignor(suggestion);
+    setConsignorSuggestions([]);
+  };
+
+  const handleConsigneeSuggestionClick = (suggestion) => {
+    setConsignee(suggestion);
+    setConsigneeSuggestions([]);
   };
 
   
@@ -73,50 +118,64 @@ const InvoiceBox = () => {
           <tr className="information">
             <td colSpan="3">
               <table>
-                <tbody style={{ textAlign: "center" }}>
-                  <tr className="info">
-                  
-                    <td className="info-column" id="coningerid">
-                      <div className="Consignorlable">
-                        <label
-                          htmlFor="consignorInput"
-                          style={{ fontWeight: "bold" }}
-                        >
-                          Consignor:
-                        </label>
-                      </div>
-                      <div className="consignorBox">
-                        <input
-                          type="text"
-                          id="consignorInput"
-                          name="consignor"
-                        />
-                      </div>
-                    </td>
-                    <td className="info-column">
-                      <div className="Consigneelable">
-                        <label
-                          htmlFor="consigneeInput"
-                          style={{
-                            fontWeight: "bold",
-                            textAlign: "start",
-                            marginLeft: "20px",
-                          }}
-                        >
-                          Consignee:
-                        </label>
-                      </div>
-                      <div className="consigneeBox">
-                        <input
-                          style={{ textAlign: "start" }}
-                          type="text"
-                          id="consigneeInput"
-                          name="consignee"
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
+              <tbody style={{ textAlign: "center" }}>
+      <tr className="info">
+        <td className="info-column" id="coningerid">
+          <div className="Consignorlable">
+            <label
+              htmlFor="consignorInput"
+              style={{ fontWeight: "bold" }}
+            >
+              Consignor:
+            </label>
+          </div>
+          <div className="consignorBox">
+            <input
+              type="text"
+              id="consignorInput"
+              name="consignor"
+              value={consignor}
+              onChange={handleConsignorChange}
+            />
+            {/* Display Consignor Suggestions */}
+            <ul>
+              {consignorSuggestions.map((suggestion, index) => (
+                <li key={index} onClick={() => handleConsignorSuggestionClick(suggestion)}>{suggestion}</li>
+              ))}
+            </ul>
+          </div>
+        </td>
+        <td className="info-column">
+          <div className="Consigneelable">
+            <label
+              htmlFor="consigneeInput"
+              style={{
+                fontWeight: "bold",
+                textAlign: "start",
+                marginLeft: "20px",
+              }}
+            >
+              Consignee:
+            </label>
+          </div>
+          <div className="consigneeBox">
+            <input
+              type="text"
+              id="consigneeInput"
+              name="consignee"
+              value={consignee}
+              onChange={handleConsigneeChange}
+            />
+            {/* Display Consignee Suggestions */}
+            <ul>
+              {consigneeSuggestions.map((suggestion, index) => (
+                <li key={index} onClick={() => handleConsigneeSuggestionClick(suggestion)}>{suggestion}</li>
+              ))}
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </tbody>
               </table>
             </td>
           </tr>
@@ -176,14 +235,22 @@ const InvoiceBox = () => {
                           <textarea type="text" id="Total" name="Total" />
                         </div>
                         <div className="Payment">
-                          <label htmlFor="payment" style={{marginBottom :"10px" , fontWeight :"bold"}}>Payment:</label>
+                          <label
+                            htmlFor="payment"
+                            style={{ marginBottom: "10px", fontWeight: "bold" }}
+                          >
+                            Payment:
+                          </label>
 
                           <div
-                            style={{ display: "inline-flex", alignItems: "center" }}
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                            }}
                           >
                             <label
                               htmlFor="paidInput"
-                              style={{ marginLeft: "1px" , marginRight:"1px" }}
+                              style={{ marginLeft: "1px", marginRight: "1px" }}
                             >
                               PAID:
                             </label>
@@ -191,7 +258,7 @@ const InvoiceBox = () => {
                               type="checkbox"
                               id="paidInput"
                               name="TOPAY"
-                              style={{marginRight : "5px" }}
+                              style={{ marginRight: "5px" }}
                             />
                           </div>
 
@@ -204,7 +271,7 @@ const InvoiceBox = () => {
                           >
                             <label
                               htmlFor="topayInput"
-                              style={{ marginRight: "1px" , marginLeft:"1px" }}
+                              style={{ marginRight: "1px", marginLeft: "1px" }}
                             >
                               TOPAY:
                             </label>
@@ -212,7 +279,8 @@ const InvoiceBox = () => {
                               type="checkbox"
                               id="topayInput"
                               name="TOPAY"
-                             style={{marginleft :"1px"}}/>
+                              style={{ marginleft: "1px" }}
+                            />
                           </div>
                         </div>
                       </div>
