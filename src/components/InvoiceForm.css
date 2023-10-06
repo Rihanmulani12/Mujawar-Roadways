@@ -8,7 +8,7 @@
 .invoice-form {
   max-width: 745px;
   margin: 0 auto;
-  padding: 8px;
+  padding: 5px;
   border: 1px solid #aaa9a9;
   background-color: #f9f9f9;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -129,23 +129,24 @@ textarea {
 .logo-header-container {
      display: flex;
     align-items: center;
-    margin-bottom: -8px; /* Adjusted margin for better spacing */
+    margin-bottom: -6px;
+    margin-top: 2px; /* Adjusted margin for better spacing */
 }
 
 /* Style for the logo image */
 .logo-header-container img {
-  height: 30px;
-  width: 30px;
-  margin-right: 5px;
-  margin-top: -24px;
+  height: 21px;
+  width: 31px;
+  margin-right: 3px;
+  margin-top: -16px;
   margin-bottom: 0px; /* Adjusted margin for better spacing */
 }
 
 /* Style for the 'h3' element inside 'logo-header-container' */
 .logo-header-container h3 {
-  margin-top: -22px;
+  margin-top: -25px;
   font-size: 18px;
-  margin-bottom: 5px; /* Adjusted font size for better readability */
+  margin-bottom: -5px; /* Adjusted font size for better readability */
 }
 
 /* Style for the 'small-label' class */
@@ -208,7 +209,7 @@ td {
 
 .consigneeBox #consigneeInput{
   margin-right: 20px;
-  margin-left: 20px;
+  margin-left: 36px;
   width: 350px;
   margin-bottom: 0px;
   margin-top: 0px;
@@ -235,7 +236,7 @@ td {
 
 .subjectedkop{
   text-align: end;
-  margin-bottom: 20px;
+  margin-bottom: 9px;
  
 }
 
@@ -335,6 +336,18 @@ td {
   margin-right: 2px;
  
 }
+
+.suggestion-list, li {
+  padding: 1%;
+  margin-bottom: 2px;
+
+  font-size: smaller;
+  margin-top: -2px;
+}
+
+
+
+
 
 
 

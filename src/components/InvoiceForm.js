@@ -1,21 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import logo from "./img.png";
 import "./InvoiceForm.css";
 
-const consignorSuggestionsArray = ['SDM', 'Sapuu', 'Shaha']; // Predefined consignor suggestions
-const consigneeSuggestionsArray = ['arbaz', 'summya', 'sahil']; // Predefined consignee suggestions
+const consignorSuggestionsArray = ["SDM", "Sapuu", "Shaha"]; // Predefined consignor suggestions
+const consigneeSuggestionsArray = ["Arbaz", "Summya", "Sahil"]; // Predefined consignee suggestions
 
 const InvoiceBox = () => {
   const currentDate = new Date().toISOString().split("T")[0];
   const [billNumber, setBillNumber] = useState(0);
-  const [consignor, setConsignor] = useState('');
-  const [consignee, setConsignee] = useState('');
+  const [consignor, setConsignor] = useState("");
+  const [consignee, setConsignee] = useState("");
+  
   const [consignorSuggestions, setConsignorSuggestions] = useState([]);
   const [consigneeSuggestions, setConsigneeSuggestions] = useState([]);
+  
+
+  
 
   const generateBillNumber = () => {
     let updatedBillNumber = billNumber + 1;
-    if (updatedBillNumber === 10) {
+    if (updatedBillNumber === 10000) {
       updatedBillNumber = 0;
     }
     setBillNumber(updatedBillNumber);
@@ -27,29 +31,31 @@ const InvoiceBox = () => {
   };
 
   const suggestConsignorNames = (input) => {
-    return consignorSuggestionsArray.filter(name =>
+    const filteredNames = consignorSuggestionsArray.filter((name) =>
       name.toLowerCase().includes(input.toLowerCase())
     );
+    return filteredNames.sort((a, b) => a.localeCompare(b));
   };
 
   const suggestConsigneeNames = (input) => {
-    return consigneeSuggestionsArray.filter(name =>
+    const filteredNames = consigneeSuggestionsArray.filter((name) =>
       name.toLowerCase().includes(input.toLowerCase())
     );
+    return filteredNames.sort((a, b) => a.localeCompare(b));
   };
 
   const handleConsignorChange = (event) => {
     const newValue = event.target.value;
     setConsignor(newValue);
     setConsignorSuggestions(suggestConsignorNames(newValue));
-    localStorage.setItem('consignor', newValue);
+    localStorage.setItem("consignor", newValue);
   };
 
   const handleConsigneeChange = (event) => {
     const newValue = event.target.value;
     setConsignee(newValue);
     setConsigneeSuggestions(suggestConsigneeNames(newValue));
-    localStorage.setItem('consignee', newValue);
+    localStorage.setItem("consignee", newValue);
   };
 
   const handleConsignorSuggestionClick = (suggestion) => {
@@ -62,10 +68,14 @@ const InvoiceBox = () => {
     setConsigneeSuggestions([]);
   };
 
-  
-  
+
+
+ 
+
+ 
+
   return (
-    <div className="invoice-form" style={{ marginBottom: "20px" }}>
+    <div className="invoice-form" style={{ marginBottom: "70px"  , marginTop: "7px"}}>
       <table cellPadding="0" cellSpacing="0">
         <tbody>
           <tr className="top-row">
@@ -86,14 +96,21 @@ const InvoiceBox = () => {
               </h5>
             </td>
             <td className="date-billno-container">
-              <div className="subjectedkop">
-                <label
-                  htmlFor="Date"
-                  style={{ marginRight: "50px", marginBottom: "10px" }}
-                >
-                  <b>Subjected To Kolhapur Jurisdication Only</b>
-                </label>
-              </div>
+            <div className="subjectedkop">
+      <label htmlFor="Date" style={{ marginRight: "50px", marginBottom: "2px" }}>
+        <b>Subjected To Kolhapur Jurisdiction Only</b>
+       
+
+
+
+
+
+
+
+      </label>
+    </div>
+         
+
 
               <div className="small-label">
                 <label htmlFor="Date" style={{ marginLeft: "15px" }}>
@@ -118,64 +135,88 @@ const InvoiceBox = () => {
           <tr className="information">
             <td colSpan="3">
               <table>
-              <tbody style={{ textAlign: "center" }}>
-      <tr className="info">
-        <td className="info-column" id="coningerid">
-          <div className="Consignorlable">
-            <label
-              htmlFor="consignorInput"
-              style={{ fontWeight: "bold" }}
-            >
-              Consignor:
-            </label>
-          </div>
-          <div className="consignorBox">
-            <input
-              type="text"
-              id="consignorInput"
-              name="consignor"
-              value={consignor}
-              onChange={handleConsignorChange}
-            />
-            {/* Display Consignor Suggestions */}
-            <ul>
-              {consignorSuggestions.map((suggestion, index) => (
-                <li key={index} onClick={() => handleConsignorSuggestionClick(suggestion)}>{suggestion}</li>
-              ))}
-            </ul>
-          </div>
-        </td>
-        <td className="info-column">
-          <div className="Consigneelable">
-            <label
-              htmlFor="consigneeInput"
-              style={{
-                fontWeight: "bold",
-                textAlign: "start",
-                marginLeft: "20px",
-              }}
-            >
-              Consignee:
-            </label>
-          </div>
-          <div className="consigneeBox">
-            <input
-              type="text"
-              id="consigneeInput"
-              name="consignee"
-              value={consignee}
-              onChange={handleConsigneeChange}
-            />
-            {/* Display Consignee Suggestions */}
-            <ul>
-              {consigneeSuggestions.map((suggestion, index) => (
-                <li key={index} onClick={() => handleConsigneeSuggestionClick(suggestion)}>{suggestion}</li>
-              ))}
-            </ul>
-          </div>
-        </td>
-      </tr>
-    </tbody>
+                <tbody style={{ textAlign: "center" }}>
+                  <tr className="info">
+                    <td className="info-column" id="coningerid">
+                      <div className="Consignorlable">
+                        <label
+                          htmlFor="consignorInput"
+                          style={{ fontWeight: "bold" }}
+                        >
+                          Consignor:
+                        </label>
+                      </div>
+                      <div
+                        className="consignorBox"
+                        style={{ position: "relative" }}
+                      >
+                        <input
+                          type="text"
+                          id="consignorInput"
+                          name="consignor"
+                          value={consignor}
+                          onChange={handleConsignorChange}
+                        />
+                        {/* Display Consignor Suggestions */}
+                        {consignorSuggestions.length > 0 && (
+                          <ul className="suggestion-list">
+                            {consignorSuggestions.map((suggestion, index) => (
+                              <li
+                                key={index}
+                                onClick={() =>
+                                  handleConsignorSuggestionClick(suggestion)
+                                }
+                              >
+                                {suggestion}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    </td>
+                    <td className="info-column">
+                      <div className="Consigneelable">
+                        <label
+                          htmlFor="consigneeInput"
+                          style={{
+                            fontWeight: "bold",
+                            textAlign: "start",
+                            marginLeft: "36px",
+                          }}
+                        >
+                          Consignee:
+                        </label>
+                      </div>
+                      <div
+                        className="consigneeBox"
+                        style={{ position: "relative" }}
+                      >
+                        <input
+                          type="text"
+                          id="consigneeInput"
+                          name="consignee"
+                          value={consignee}
+                          onChange={handleConsigneeChange}
+                        />
+
+                        {consigneeSuggestions.length > 0 && (
+                          <ul className="suggestion-list">
+                            {consigneeSuggestions.map((suggestion, index) => (
+                              <li
+                                key={index}
+                                onClick={() =>
+                                  handleConsigneeSuggestionClick(suggestion)
+                                }
+                              >
+                                {suggestion}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </td>
           </tr>
@@ -237,7 +278,7 @@ const InvoiceBox = () => {
                         <div className="Payment">
                           <label
                             htmlFor="payment"
-                            style={{ marginBottom: "10px", fontWeight: "bold" }}
+                            style={{ marginBottom: "10px",marginRight:"15px", fontWeight: "bold" }}
                           >
                             Payment:
                           </label>
@@ -324,6 +365,5 @@ const InvoiceBox = () => {
       </div>
     </div>
   );
-  };
+};
 export default InvoiceBox;
- 
