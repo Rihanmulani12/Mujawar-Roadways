@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import logo from "./img.png";
 import "./InvoiceForm.css";
 
@@ -10,12 +11,9 @@ const InvoiceBox = () => {
   const [billNumber, setBillNumber] = useState(0);
   const [consignor, setConsignor] = useState("");
   const [consignee, setConsignee] = useState("");
-  
+
   const [consignorSuggestions, setConsignorSuggestions] = useState([]);
   const [consigneeSuggestions, setConsigneeSuggestions] = useState([]);
-  
-
-  
 
   const generateBillNumber = () => {
     let updatedBillNumber = billNumber + 1;
@@ -68,14 +66,11 @@ const InvoiceBox = () => {
     setConsigneeSuggestions([]);
   };
 
-
-
- 
-
- 
-
   return (
-    <div className="invoice-form" style={{ marginBottom: "70px"  , marginTop: "7px"}}>
+    <div
+      className="invoice-form"
+      style={{ marginBottom: "45px", marginTop: "5px" }}
+    >
       <table cellPadding="0" cellSpacing="0">
         <tbody>
           <tr className="top-row">
@@ -96,21 +91,14 @@ const InvoiceBox = () => {
               </h5>
             </td>
             <td className="date-billno-container">
-            <div className="subjectedkop">
-      <label htmlFor="Date" style={{ marginRight: "50px", marginBottom: "2px" }}>
-        <b>Subjected To Kolhapur Jurisdiction Only</b>
-       
-
-
-
-
-
-
-
-      </label>
-    </div>
-         
-
+              <div className="subjectedkop">
+                <label
+                  htmlFor="Date"
+                  style={{ marginRight: "50px", marginBottom: "2px" }}
+                >
+                  <b>Subjected To Kolhapur Jurisdiction Only</b>
+                </label>
+              </div>
 
               <div className="small-label">
                 <label htmlFor="Date" style={{ marginLeft: "15px" }}>
@@ -278,7 +266,11 @@ const InvoiceBox = () => {
                         <div className="Payment">
                           <label
                             htmlFor="payment"
-                            style={{ marginBottom: "10px",marginRight:"15px", fontWeight: "bold" }}
+                            style={{
+                              marginBottom: "10px",
+                              marginRight: "15px",
+                              fontWeight: "bold",
+                            }}
                           >
                             Payment:
                           </label>
