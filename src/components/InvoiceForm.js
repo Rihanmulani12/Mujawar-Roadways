@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import logo from "./img.png";
 import "./InvoiceForm.css";
@@ -8,15 +8,23 @@ const consigneeSuggestionsArray = ["Arbaz", "Summya", "Sahil"]; // Predefined co
 
 const InvoiceBox = () => {
   const currentDate = new Date().toISOString().split("T")[0];
-  const [billNumber, setBillNumber] = useState(0);
+  const [billNumber, setBillNumber] = useState(
+    parseInt(localStorage.getItem("billNumber")) || 0
+  );
   const [consignor, setConsignor] = useState("");
   const [consignee, setConsignee] = useState("");
 
   const [consignorSuggestions, setConsignorSuggestions] = useState([]);
   const [consigneeSuggestions, setConsigneeSuggestions] = useState([]);
 
-  const generateBillNumber = () => {
+
+  useEffect(() => {
+    localStorage.setItem("billNumber", billNumber);
+   }, [billNumber]);
+
+   const generateBillNumber = () => {
     let updatedBillNumber = billNumber + 1;
+
     if (updatedBillNumber === 10000) {
       updatedBillNumber = 0;
     }
@@ -27,6 +35,7 @@ const InvoiceBox = () => {
   const handlePrintInvoice = () => {
     generateBillNumber();
   };
+  
 
   const suggestConsignorNames = (input) => {
     const filteredNames = consignorSuggestionsArray.filter((name) =>
