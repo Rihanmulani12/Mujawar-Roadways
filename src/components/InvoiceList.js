@@ -11,7 +11,7 @@ const InvoiceList = ({ invoices }) => {
   };
 
   return (
-    <div style={{marginTop :"-40px" , marginBottom:"15px"}}>
+    <div style={{marginTop :"-25px" , marginBottom:"0px"}}>
       <button style={{marginRight : "5px"}} onClick={handlePrint}>Print Invoices</button>
       <button  onClick={handleCopyInvoice} >Copy Invoice</button>
       

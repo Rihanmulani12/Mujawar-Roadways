@@ -11,6 +11,7 @@ const InvoiceBox = () => {
   const [billNumber, setBillNumber] = useState(
     parseInt(localStorage.getItem("billNumber")) || 0
   );
+  
   const [consignor, setConsignor] = useState("");
   const [consignee, setConsignee] = useState("");
 
@@ -26,15 +27,20 @@ const InvoiceBox = () => {
     let updatedBillNumber = billNumber + 1;
 
     if (updatedBillNumber === 10000) {
-      updatedBillNumber = 0;
+      updatedBillNumber = 101;
     }
     setBillNumber(updatedBillNumber);
     document.getElementById("repcit").value = updatedBillNumber;
+    
   };
+  
 
   const handlePrintInvoice = () => {
     generateBillNumber();
+    
   };
+  
+  
   
 
   const suggestConsignorNames = (input) => {
@@ -78,7 +84,7 @@ const InvoiceBox = () => {
   return (
     <div
       className="invoice-form"
-      style={{ marginBottom: "45px", marginTop: "5px" }}
+      style={{ marginBottom: "40px", marginTop: "20px" }}
     >
       <table cellPadding="0" cellSpacing="0">
         <tbody>
